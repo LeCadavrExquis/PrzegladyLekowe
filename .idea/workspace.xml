@@ -4,20 +4,25 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9e60ff8c-8781-4927-90ab-53f9784a819d" name="Changes" comment="First meeting.">
-      <change afterPath="$PROJECT_DIR$/server/src/main/java/pl/knab/Przeglad/Lekowy/HttpSessionConfig.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/server/src/main/java/pl/knab/Przeglad/Lekowy/UserEntity.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/server/src/main/java/pl/knab/Przeglad/Lekowy/UserLogic.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/server/src/main/java/pl/knab/Przeglad/Lekowy/UserRole.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/server/src/main/java/pl/knab/Przeglad/Lekowy/UserService.java" afterDir="false" />
+    <list default="true" id="9e60ff8c-8781-4927-90ab-53f9784a819d" name="Changes" comment="Session authentication.">
+      <change afterPath="$PROJECT_DIR$/client/src/Dashboard.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/src/Home.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/src/Login.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/src/PageNotFound.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/initdb.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/src/main/java/pl/knab/Przeglad/Lekowy/controllers/LoginRequest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/server/build.gradle" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/src/main/java/pl/knab/Przeglad/Lekowy/HomeController.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/pl/knab/Przeglad/Lekowy/HomeController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/src/main/java/pl/knab/Przeglad/Lekowy/LoginController.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/pl/knab/Przeglad/Lekowy/LoginController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/src/main/java/pl/knab/Przeglad/Lekowy/SecurityConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/pl/knab/Przeglad/Lekowy/SecurityConfig.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/src/main/java/pl/knab/Przeglad/Lekowy/User.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/src/main/java/pl/knab/Przeglad/Lekowy/UserRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/pl/knab/Przeglad/Lekowy/UserRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/resources/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/client/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/client/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/App.css" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/App.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/App.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docker-compose.yml" beforeDir="false" afterPath="$PROJECT_DIR$/docker-compose.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/src/main/java/pl/knab/Przeglad/Lekowy/config/SecurityConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/pl/knab/Przeglad/Lekowy/config/SecurityConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/src/main/java/pl/knab/Przeglad/Lekowy/controllers/LoginController.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/pl/knab/Przeglad/Lekowy/controllers/LoginController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/src/main/java/pl/knab/Przeglad/Lekowy/user/UserEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/pl/knab/Przeglad/Lekowy/user/UserEntity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/src/main/java/pl/knab/Przeglad/Lekowy/user/UserLogic.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/pl/knab/Przeglad/Lekowy/user/UserLogic.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/src/main/resources/public/asset-manifest.json" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/resources/public/asset-manifest.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/src/main/resources/public/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/resources/public/index.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -55,8 +60,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="JavaScript File" />
         <option value="Enum" />
+        <option value="JavaScript File" />
         <option value="Class" />
       </list>
     </option>
@@ -101,7 +106,7 @@
     "RequestMappingsPanelWidth1": "75",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "Spring Boot.PrzegladLekowyApplication.executor": "Run",
-    "Spring Boot.PrzegladyLekoweApplication.executor": "Debug",
+    "Spring Boot.PrzegladyLekoweApplication.executor": "Run",
     "git-widget-placeholder": "master",
     "kotlin-language-version-configured": "true",
     "last_opened_file_path": "/home/filip/Pobrane/Przeglad Lekowy/Przeglad-Lekowy/server/src/main/resources",
@@ -113,6 +118,7 @@
     "npm.build.executor": "Run",
     "npm.start.executor": "Run",
     "settings.editor.selected.configurable": "reference.settingsdialog.project.gradle",
+    "ts.external.directory.path": "/snap/intellij-idea-ultimate/497/plugins/javascript-plugin/jsLanguageServicesImpl/external",
     "vue.rearranger.settings.migration": "true"
   },
   "keyToStringList": {
@@ -251,7 +257,8 @@
       <workItem from="1717418738085" duration="436000" />
       <workItem from="1717419386924" duration="9000" />
       <workItem from="1717774773357" duration="6991000" />
-      <workItem from="1717841715772" duration="7511000" />
+      <workItem from="1717841715772" duration="9473000" />
+      <workItem from="1717852782592" duration="6766000" />
     </task>
     <task id="LOCAL-00001" summary="Add README file.">
       <option name="closed" value="true" />
@@ -269,7 +276,15 @@
       <option name="project" value="LOCAL" />
       <updated>1717781738591</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="Session authentication.">
+      <option name="closed" value="true" />
+      <created>1717850366608</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1717850366608</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -278,15 +293,16 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Add README file." />
     <MESSAGE value="First meeting." />
-    <option name="LAST_COMMIT_MESSAGE" value="First meeting." />
+    <MESSAGE value="Session authentication." />
+    <option name="LAST_COMMIT_MESSAGE" value="Session authentication." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/server/src/main/java/pl/knab/Przeglad/Lekowy/LoginController.java</url>
-          <line>28</line>
-          <option name="timeStamp" value="2" />
+          <url>file://$PROJECT_DIR$/server/src/main/java/pl/knab/Przeglad/Lekowy/controllers/LoginController.java</url>
+          <line>48</line>
+          <option name="timeStamp" value="1" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

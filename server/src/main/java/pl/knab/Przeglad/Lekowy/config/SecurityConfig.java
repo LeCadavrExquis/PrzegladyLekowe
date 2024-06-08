@@ -36,8 +36,13 @@ public class SecurityConfig {
                                 "manifest.json",
                                 "robots.txt"
                         ).permitAll()
-                        .anyRequest().denyAll()
+                        .anyRequest().permitAll()
                 )
+                .formLogin(formLogin -> formLogin
+                        .loginPage("/login")
+                        .permitAll()
+                )
+                .logout(logout -> logout.permitAll())
                 .csrf(csrf -> csrf.disable()) // TODO: Implement CSRF protection
                 .cors(cors -> cors.configurationSource(corsConfigurationSource()));
 
@@ -51,7 +56,7 @@ public class SecurityConfig {
             ccfg.setAllowedMethods(Collections.singletonList("*"));
             ccfg.setAllowCredentials(true);
             ccfg.setAllowedHeaders(Collections.singletonList("*"));
-            ccfg.setExposedHeaders(Arrays.asList("Authorization"));
+            ccfg.setExposedHeaders(Arrays.asList("Authentication"));
             ccfg.setMaxAge(3600L);
             return ccfg;
         };

@@ -67,4 +67,8 @@ public class UserLogic implements UserDetailsService {
 
         return true;
     }
+
+    public UserEntity getUserByEmail(String email) {
+        return userRepository.findByEmail(email);
+    }
 }

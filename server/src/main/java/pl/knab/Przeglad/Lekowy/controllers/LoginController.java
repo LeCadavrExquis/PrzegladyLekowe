@@ -5,6 +5,7 @@ import jakarta.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContext;
@@ -44,17 +45,22 @@ public class LoginController {
     }
 
     @PostMapping("/signin")
-    public ResponseEntity<HttpStatus> login(HttpServletRequest req, @RequestBody UserEntity loginRequest) {
-        String username = loginRequest.getEmail();
+    public ResponseEntity<HttpStatus> login(HttpServletRequest req, @RequestBody LoginRequest loginRequest) {
+        String email = loginRequest.getEmail();
         String password = loginRequest.getPassword();
 
-        Authentication authentication = userLogic.authenticate(username,password);
-        SecurityContextHolder.getContext().setAuthentication(authentication);
+        try {
+            Authentication authentication = userLogic.authenticate(email, password);
+            SecurityContextHolder.getContext().setAuthentication(authentication);
 
-        SecurityContext sc = SecurityContextHolder.getContext();
-        sc.setAuthentication(authentication);
-        HttpSession session = req.getSession(true);
-        session.setAttribute(SPRING_SECURITY_CONTEXT_KEY, sc);
+            SecurityContext sc = SecurityContextHolder.getContext();
+            sc.setAuthentication(authentication);
+            HttpSession session = req.getSession(true);
+            session.setAttribute(SPRING_SECURITY_CONTEXT_KEY, sc);
+        } catch (Exception e) {
+            return new ResponseEntity<>(HttpStatus.UNAUTHORIZED);
+        }
+
 
         return new ResponseEntity<>(HttpStatus.OK);
     }
