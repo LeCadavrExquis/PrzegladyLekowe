@@ -5,6 +5,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.context.SecurityContext;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -33,9 +34,13 @@ public class UserController{
 
         HttpSession session = req.getSession();
         SecurityContext securityContext = (SecurityContext) session.getAttribute(SPRING_SECURITY_CONTEXT_KEY);
-        String email = (String) securityContext.getAuthentication().getPrincipal();
+        
+        UserDetails principal = (UserDetails) securityContext.getAuthentication().getPrincipal();
+        String email = principal.getUsername();
 
         return formService.getFormsForUser(email);
+
+
     }
 
     @GetMapping("/{id}")
