@@ -17,21 +17,16 @@ import jakarta.servlet.http.HttpSession;
 import pl.knab.Przeglad.Lekowy.form.FormBasicInfo;
 import pl.knab.Przeglad.Lekowy.form.FormEntity;
 import pl.knab.Przeglad.Lekowy.form.FormService;
-import pl.knab.Przeglad.Lekowy.template.TemplateBasicInfo;
-import pl.knab.Przeglad.Lekowy.template.TemplateService;
 import java.util.List;
 
 import static org.springframework.security.web.context.HttpSessionSecurityContextRepository.SPRING_SECURITY_CONTEXT_KEY;
 
 @RestController
-@RequestMapping("/doctor/forms")
-public class DoctorController {
+@RequestMapping("/patient/forms")
+public class PatientController {
 
     @Autowired
     FormService formService;
-
-    @Autowired
-    TemplateService templateService;
 
     private String extractEmailFromSecurityContext(HttpServletRequest req) {
 
@@ -44,43 +39,38 @@ public class DoctorController {
     }
 
     @GetMapping
-    public List<FormBasicInfo> getDoctorForms(HttpServletRequest req) {
+    public List<FormBasicInfo> getUserForms(HttpServletRequest req) {
 
         String email = extractEmailFromSecurityContext(req);
-        return formService.getFormsByDoctor(email);
-    }
+        return formService.getFormsForUser(email);
 
-    @PostMapping
-    public ResponseEntity<HttpStatus> assignForm(@RequestBody FormEntity assaignedForm) {
-
-        formService.assaignForm(assaignedForm);
-        return new ResponseEntity<>(HttpStatus.OK);
     }
 
     @GetMapping("/submitted")
-    public List<FormBasicInfo> getSubmittedForDoctor(HttpServletRequest req) {
+    public List<FormBasicInfo> getSubmittedForUser(HttpServletRequest req) {
 
-        String doctorEmail = extractEmailFromSecurityContext(req);
-        return formService.getCompletedForDoctor(doctorEmail);
+        String email = extractEmailFromSecurityContext(req);
+        return formService.getCompletedForUser(email);
     }
 
     @GetMapping("/assaigned")
-    public List<FormBasicInfo> getAssaignedForDoctor(HttpServletRequest req) {
+    public List<FormBasicInfo> getAssaignedForUser(HttpServletRequest req) {
 
-        String doctorEmail = extractEmailFromSecurityContext(req);
-        return formService.getUncompletedForDoctor(doctorEmail);
+        String email = extractEmailFromSecurityContext(req);
+        return formService.getUncompletedForUser(email);
     }
 
     @GetMapping("/{id}")
     public FormEntity getForm(@PathVariable String id) {
+
         return formService.getForm(id);
     }
 
-    @GetMapping("/templates")
-    public List<TemplateBasicInfo> getTemplates(HttpServletRequest req) {
+    @PostMapping("/{id}")
+    public ResponseEntity<HttpStatus> submitForm(@PathVariable String id, @RequestBody FormEntity submitedForm) {
 
-        return templateService.getAllTemplatesBasicInfo();
-
+        formService.submitForm(submitedForm);
+        return new ResponseEntity<>(HttpStatus.OK);
     }
 
 }

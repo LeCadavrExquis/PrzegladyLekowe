@@ -28,6 +28,7 @@ public class SecurityConfig {
                                 "/login",
                                 "/signup",
                                 "/signin",
+                                "/register",
                                 "/index.html",
                                 "/static/**",
                                 "favicon.ico",

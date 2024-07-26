@@ -3,26 +3,25 @@ package pl.knab.Przeglad.Lekowy.form;
 import java.time.Instant;
 
 import org.springframework.data.annotation.Id;
-import com.fasterxml.jackson.databind.JsonNode;
 import org.springframework.data.mongodb.core.mapping.Document;
+
 
 @Document(collection = "form")
 public class FormEntity {
     
     @Id
     public String id;
+    private FormStatus status;
     private String doctorEmail;
     private String userEmail;
-    private JsonNode form;
-    private JsonNode anwser;
+    private Object form;
+    private Object anwser;
     private Instant timeCreated;
-
-    private FormStatus status;
     private Instant timeCompleted;
 
     public FormEntity() {}
 
-    public FormEntity(String doctorEmail, String userEmail, JsonNode form){
+    public FormEntity(String doctorEmail, String userEmail, Object form){
         this.doctorEmail = doctorEmail;
         this.userEmail = userEmail;
         this.form = form;
@@ -58,19 +57,19 @@ public class FormEntity {
         this.userEmail = userEmail;
     }
 
-    public JsonNode getForm() {
+    public Object getForm() {
         return form;
     }
 
-    public void setForm(JsonNode form) {
+    public void setForm(Object form) {
         this.form = form;
     }
 
-    public JsonNode getAnwser() {
+    public Object getAnwser() {
         return anwser;
     }
 
-    public void setAnwser(JsonNode anwser) {
+    public void setAnwser(Object anwser) {
         this.anwser = anwser;
     }
 

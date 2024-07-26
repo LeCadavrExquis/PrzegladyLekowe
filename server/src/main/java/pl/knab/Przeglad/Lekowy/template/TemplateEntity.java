@@ -2,21 +2,19 @@ package pl.knab.Przeglad.Lekowy.template;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
-import com.fasterxml.jackson.databind.JsonNode;
-
 @Document(collection = "template")
 public class TemplateEntity {
     
     @Id
     public String id;
     private String name;
-    private JsonNode form;
+    private Object form;
 
     public TemplateEntity(){
 
     }
 
-    public TemplateEntity(String name, JsonNode form){
+    public TemplateEntity(String name, Object form){
         this.name = name;
         this.form = form; 
     }
@@ -37,11 +35,11 @@ public class TemplateEntity {
         this.name = name;
     }
 
-    public JsonNode getForm(){
+    public Object getForm(){
         return form;
     }
 
-    public void setForm(JsonNode form){
+    public void setForm(Object form){
         this.form = form;
     }
 }

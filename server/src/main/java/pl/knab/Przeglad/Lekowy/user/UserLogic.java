@@ -63,6 +63,7 @@ public class UserLogic implements UserDetailsService {
         }
         user.setPassword(passwordEncoder.encode(password));
 
+        user.setRole(UserRole.USER);
         userRepository.save(user);
 
         return true;
@@ -70,5 +71,10 @@ public class UserLogic implements UserDetailsService {
 
     public UserEntity getUserByEmail(String email) {
         return userRepository.findByEmail(email);
+    }
+
+    public UserInfo getUserBasicInfoByEmail(String email){
+        UserInfo result = userRepository.findBasicInfoByEmail(email);
+        return result;
     }
 }
