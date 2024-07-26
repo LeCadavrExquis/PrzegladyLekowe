@@ -1,7 +1,6 @@
-import logo from './logo.svg';
 import './App.css';
 import {useCallback, useState} from "react";
-import {Login} from "./Login";
+import {Login, Register} from "./Authentication";
 import {PageNotFound} from "./PageNotFound";
 import {BrowserRouter, Route, Routes} from "react-router-dom";
 import {Home} from "./Home";
@@ -14,6 +13,7 @@ function App() {
               <Route path="/">
                   <Route index element={<Home />} />
                   <Route path="login" element={<Login />} />
+                  <Route path="register" element={<Register />} />
                   <Route path="app" element={<Dashboard />} />
                   <Route path="*" element={<PageNotFound />} />
               </Route>
