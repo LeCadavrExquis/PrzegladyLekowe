@@ -40,3 +40,61 @@ db.template.insertOne({
         ]
     }
 });
+
+db.template.insertOne({
+    name: "Survey Template 2",
+    form: {
+        title: "Customer Feedback Survey second version for testing",
+        description: "Please provide your feedback.",
+        questions: [
+            {
+                type: "text",
+                name: "customerName",
+                title: "What is your name? 2"
+            },
+            {
+                type: "rating",
+                name: "customerRating",
+                title: "How would you rate our service? 2",
+                isRequired: true,
+                minRateDescription: "Very Poor",
+                maxRateDescription: "Excellent"
+            },
+            {
+                type: "comment",
+                name: "customerComments",
+                title: "Any additional comments? 2"
+            }
+        ]
+    }
+});
+
+db.assignment.insertOne({
+    name: "example assignment",
+    doctorEmail: "doctor@example.com",
+    userEmail: "user@example.com",
+    form: {
+        title: "Customer Feedback Survey third version for testing",
+        description: "Please provide your feedback.",
+        questions: [
+            {
+                type: "text",
+                name: "customerName",
+                title: "What is your name? 2"
+            },
+            {
+                type: "rating",
+                name: "customerRating",
+                title: "How would you rate our service? 2",
+                isRequired: true,
+                minRateDescription: "Very Poor",
+                maxRateDescription: "Excellent"
+            },
+            {
+                type: "comment",
+                name: "customerComments",
+                title: "Any additional comments? 2"
+            }
+        ]
+    }
+});

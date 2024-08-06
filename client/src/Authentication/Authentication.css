@@ -1,14 +1,5 @@
 /* Auth.css */
 
-:root {
-    --darkest-color: #323656;
-    --dark-color: #424874;
-    --light-color:  #677090;
-    --lighter-color: #9FABBA;  
-    --background-color: #D6E5E3;
-  }
-  
-
 .auth-container {
     display: flex;
     flex-direction: column;
@@ -47,7 +38,6 @@
     border: 1px solid #ddd;
     border-radius: 4px;
     font-size: 16px;
-    width: 93%;
     background-color: var(--lighter-color);
 }
 
@@ -61,7 +51,7 @@
     border-radius: 4px;
     cursor: pointer;
     font-size: 16px;
-    margin-top: 12px; /* Added margin for better spacing */
+    margin-top: 12px;
     transition: background-color 0.3s ease;
 }
 

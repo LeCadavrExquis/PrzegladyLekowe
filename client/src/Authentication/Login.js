@@ -1,6 +1,6 @@
 import { useCallback, useState } from "react";
 import { useNavigate } from 'react-router-dom';
-import './Authentiaction.css';
+import './Authentication.css';
 
 const Login = () => {
     const navigate = useNavigate();
@@ -23,7 +23,7 @@ const Login = () => {
         } else {
             console.error(response);
         }
-    }, [email, password]);
+    }, [email, password, navigate]);
 
     const signUp = () => {
         navigate("/register");

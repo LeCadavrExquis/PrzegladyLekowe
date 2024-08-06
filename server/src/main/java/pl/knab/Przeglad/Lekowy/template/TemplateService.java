@@ -11,7 +11,11 @@ public class TemplateService {
     private TemplateRepository templateRepository;
 
     public List<TemplateBasicInfo> getAllTemplatesBasicInfo(){          
-
         return templateRepository.findAllBy();
-    }    
+    }
+
+    public TemplateEntity getById(String id){
+        TemplateEntity template = templateRepository.findById(id).orElse(null);
+        return template;
+    }
 }

@@ -1,4 +1,4 @@
-package pl.knab.Przeglad.Lekowy.controllers;
+package pl.knab.Przeglad.Lekowy.controllers.requests;
 
 public class RegisterRequest {
     private String email;

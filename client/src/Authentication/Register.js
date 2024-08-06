@@ -28,8 +28,9 @@ const Register = () => {
         } else {
             console.error(response);
         }
-    }, [email, password, firstName, lastName]);
+    }, [email, password, firstName, lastName, navigate]);
 
+    const goToLogin = () => { navigate('/login') }
     return (
         <div className="auth-container">
             <div className="form-container">
@@ -73,7 +74,8 @@ const Register = () => {
                         onChange={e => setLastName(e.target.value)}
                     />
                 </div>
-                <button className="auth-button" onClick={signUp}>Create Account</button>
+                <button className="auth-button" onClick={ signUp }>Create Account</button>
+                <button className="auth-button" onClick={ goToLogin }>Log In</button>
             </div>
         </div>
     );

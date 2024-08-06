@@ -1,0 +1,10 @@
+.form-box-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    height: 100vh;
+    background: var(--background-color);
+    padding: 20px;
+    padding-top: 50px;
+}

@@ -4,4 +4,7 @@
   --light-color:  #677090;
   --lighter-color: #9FABBA;  
   --background-color: #D6E5E3;
+  
+  background-color: var(--background-color);
+
 }
