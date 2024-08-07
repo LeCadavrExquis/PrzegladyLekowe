@@ -1,10 +1,12 @@
 package pl.knab.Przeglad.Lekowy.user;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
@@ -32,7 +34,10 @@ public class UserLogic implements UserDetailsService {
             throw new UsernameNotFoundException("User not found with this email" + username);
         }
 
+        GrantedAuthority authoritiy = new SimpleGrantedAuthority("ROLE_"+user.getRole().name());
         List<GrantedAuthority> authorities = new ArrayList<>();
+        authorities.add(authoritiy);
+
         return new org.springframework.security.core.userdetails.User(
                 user.getEmail(),
                 user.getPassword(),
@@ -68,11 +73,10 @@ public class UserLogic implements UserDetailsService {
 
         return true;
     }
-
+    
     public UserEntity getUserByEmail(String email) {
         return userRepository.findByEmail(email);
     }
-
     public UserInfo getUserBasicInfoByEmail(String email){
         UserInfo result = userRepository.findBasicInfoByEmail(email);
         return result;

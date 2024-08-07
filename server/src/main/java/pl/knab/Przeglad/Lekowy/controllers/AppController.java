@@ -3,6 +3,7 @@ package pl.knab.Przeglad.Lekowy.controllers;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.core.context.SecurityContext;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -50,6 +51,7 @@ public class AppController {
     }
 
     // USER, DOCTOR
+    @PreAuthorize("hasRole('ROLE_USER') or hasRole('ROLE_DOCTOR')")
     @RequestMapping("/user")
     public UserInfo getUserInfo(HttpServletRequest req) {
 
@@ -58,6 +60,7 @@ public class AppController {
     }
 
     // USER, DOCTOR
+    @PreAuthorize("hasRole('ROLE_USER') or hasRole('ROLE_DOCTOR')")
     @GetMapping("/assignments")
     public List<AssignmentBasicInfo> getAssignmentsForUser(HttpServletRequest req) {
         String email = extractEmailFromSecurityContext(req);
@@ -65,6 +68,7 @@ public class AppController {
     }
 
     //DOCTOR
+    @PreAuthorize("hasRole('ROLE_DOCTOR')")
     @PostMapping("/assignment")
     public ResponseEntity<HttpStatus> assign(HttpServletRequest req, @RequestBody AssignRequest assignRequest) {
 
@@ -79,6 +83,7 @@ public class AppController {
     }
 
     //DOCTOR
+    @PreAuthorize("hasRole('ROLE_DOCTOR')")
     @GetMapping("/templates")
     public List<TemplateBasicInfo> getTemplates(HttpServletRequest req) {
         return templateService.getAllTemplatesBasicInfo();
@@ -86,6 +91,7 @@ public class AppController {
     }
 
     // USER, DOCTOR
+    @PreAuthorize("hasRole('ROLE_USER') or hasRole('ROLE_DOCTOR')")
     @GetMapping("assignment/{id}")
     public AssignmentEntity getAssignment(HttpServletRequest req, @PathVariable String id) {
         String email = extractEmailFromSecurityContext(req);
@@ -99,6 +105,7 @@ public class AppController {
     }
 
     // USER
+    @PreAuthorize("hasRole('ROLE_USER')")
     @PostMapping("assignment/{id}")
     public ResponseEntity<HttpStatus> submit(HttpServletRequest req, @PathVariable String id, @RequestBody SubmitRequest submitRequest) {
         String email = extractEmailFromSecurityContext(req);

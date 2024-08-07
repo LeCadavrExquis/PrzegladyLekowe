@@ -3,6 +3,7 @@ import { useParams, useNavigate } from 'react-router-dom';
 import { Survey } from 'survey-react-ui';
 import { Model } from 'survey-core';
 import "survey-core/defaultV2.min.css";
+import "./Assignment.css"
 
 const Assignment = () => {
 
@@ -62,6 +63,8 @@ const Assignment = () => {
         }
     }
 
+    const doBack = () => { navigate("/app") }
+
     useEffect(() => { fetchForm(); }, []);
 
     if (!form) {
@@ -82,7 +85,12 @@ const Assignment = () => {
     }
     return (
         <>
-            <Survey model={survey}/>
+            <Survey model={survey} />
+            {isCompleted && <>
+                <div className='back-button-container'>
+                    <button className='back-button' onClick={doBack} style={{ color: 'white' }}>Return Back ⬅️</button>
+                </div>
+            </>}
         </>
     )
 };
