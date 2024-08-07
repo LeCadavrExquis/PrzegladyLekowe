@@ -1,34 +1,34 @@
-package pl.knab.Przeglad.Lekowy.form;
+package pl.knab.Przeglad.Lekowy.assignment;
 
 import java.time.Instant;
 
 import org.springframework.data.annotation.Id;
-import com.fasterxml.jackson.databind.JsonNode;
 import org.springframework.data.mongodb.core.mapping.Document;
 
-@Document(collection = "form")
-public class FormEntity {
+
+@Document(collection = "assignment")
+public class AssignmentEntity {
     
     @Id
     public String id;
+    public String name;
+    private AssignmentStatus status;
     private String doctorEmail;
     private String userEmail;
-    private JsonNode form;
-    private JsonNode anwser;
+    private Object form;
+    private Object anwser;
     private Instant timeCreated;
-
-    private FormStatus status;
     private Instant timeCompleted;
 
-    public FormEntity() {}
+    public AssignmentEntity() {}
 
-    public FormEntity(String doctorEmail, String userEmail, JsonNode form){
+    public AssignmentEntity(String name, String doctorEmail, String userEmail, Object form){
+        this.name = name;
         this.doctorEmail = doctorEmail;
         this.userEmail = userEmail;
         this.form = form;
         this.timeCreated = Instant.now();
-
-        this.status = FormStatus.UNCOMPLETED;
+        this.status = AssignmentStatus.UNCOMPLETED;
         this.anwser = null;
         this.timeCompleted = null;
 
@@ -40,6 +40,14 @@ public class FormEntity {
 
     public void setId(String id) {
         this.id = id;
+    }
+
+    public String getName(){
+        return this.name;
+    }
+
+    public void setName(String name){
+        this.name = name;
     }
 
     public String getDoctorEmail() {
@@ -58,19 +66,19 @@ public class FormEntity {
         this.userEmail = userEmail;
     }
 
-    public JsonNode getForm() {
+    public Object getForm() {
         return form;
     }
 
-    public void setForm(JsonNode form) {
+    public void setForm(Object form) {
         this.form = form;
     }
 
-    public JsonNode getAnwser() {
+    public Object getAnwser() {
         return anwser;
     }
 
-    public void setAnwser(JsonNode anwser) {
+    public void setAnwser(Object anwser) {
         this.anwser = anwser;
     }
 
@@ -78,11 +86,11 @@ public class FormEntity {
         return timeCreated;
     }
 
-    public FormStatus getStatus() {
+    public AssignmentStatus getStatus() {
         return status;
     }
 
-    public void setStatus(FormStatus status) {
+    public void setStatus(AssignmentStatus status) {
         this.status = status;
     }
 
